@@ -413,6 +413,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1584112268240686675, guid: 35861510587b7489780fe86970823679,
+        type: 3}
+      propertyPath: jogador
+      value: 
+      objectReference: {fileID: 1882782869}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35861510587b7489780fe86970823679, type: 3}
 --- !u!1001 &554898271
@@ -692,6 +697,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1584112268240686675, guid: 35861510587b7489780fe86970823679,
+        type: 3}
+      propertyPath: jogador
+      value: 
+      objectReference: {fileID: 1882782869}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35861510587b7489780fe86970823679, type: 3}
 --- !u!1001 &1839924496
@@ -757,6 +767,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1584112268240686675, guid: 35861510587b7489780fe86970823679,
+        type: 3}
+      propertyPath: jogador
+      value: 
+      objectReference: {fileID: 1882782869}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35861510587b7489780fe86970823679, type: 3}
 --- !u!1 &1882782869 stripped

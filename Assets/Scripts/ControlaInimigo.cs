@@ -27,7 +27,15 @@ public class ControlaInimigo : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector3 direcao = jogador.transform.position - transform.position;
-        _rigidbody.MovePosition(_rigidbody.position + direcao.normalized * velocidade * Time.deltaTime);
+		float distancia = Vector3.Distance(transform.position, jogador.transform.position);
+		
+		if (distancia > 2.5)
+		{
+			Vector3 direcao = jogador.transform.position - transform.position;
+			_rigidbody.MovePosition(_rigidbody.position + direcao.normalized * velocidade * Time.deltaTime);
+			
+			Quaternion rotacao = Quaternion.LookRotation(direcao);
+			_rigidbody.MoveRotation(rotacao);
+		}
     }
 }

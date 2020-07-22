@@ -7,19 +7,21 @@ public class ControlaInimigo : MonoBehaviour
     private const string ANIMATOR_ATACANDO = "Atacando";
 
     [SerializeField]
-    private GameObject jogador;
-
-    [SerializeField]
     private float velocidade = 5;
 
     private Rigidbody _rigidbody;
     private Animator _animator;
+    private GameObject _jogador;
 
     // Start is called before the first frame update
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
         _animator = GetComponent<Animator>();
+
+        _jogador = GameObject.FindGameObjectWithTag("Jogador");
+        int geraTipoZumbi = Random.Range(1, 28);
+        transform.GetChild(geraTipoZumbi).gameObject.SetActive(true);
     }
 
     // Update is called once per frame
@@ -30,8 +32,8 @@ public class ControlaInimigo : MonoBehaviour
 
     void FixedUpdate()
     {
-		float distancia = Vector3.Distance(transform.position, jogador.transform.position);
-		Vector3 direcao = jogador.transform.position - transform.position;
+		float distancia = Vector3.Distance(transform.position, _jogador.transform.position);
+		Vector3 direcao = _jogador.transform.position - transform.position;
 		
 		Quaternion rotacao = Quaternion.LookRotation(direcao);
 		_rigidbody.MoveRotation(rotacao);
@@ -49,7 +51,7 @@ public class ControlaInimigo : MonoBehaviour
     void AtacaJogador ()
     {
         Time.timeScale = 0;
-        jogador.GetComponent<ControlaJogador>().GameOver();
+        _jogador.GetComponent<ControlaJogador>().GameOver();
     }
 
 }

@@ -45,4 +45,11 @@ public class ControlaInimigo : MonoBehaviour
             _animator.SetBool(ANIMATOR_ATACANDO, true);
         }
     }
+
+    void AtacaJogador ()
+    {
+        Time.timeScale = 0;
+        jogador.GetComponent<ControlaJogador>().GameOver();
+    }
+
 }

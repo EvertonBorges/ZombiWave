@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ControlaJogador : MonoBehaviour
 {
@@ -11,15 +12,24 @@ public class ControlaJogador : MonoBehaviour
     [SerializeField]
     private float velocidade = 10;
 
+    [SerializeField]
+    private GameObject textoGameOver;
+
     private Vector3 direcao;
 
     private Animator _animator;
     private Rigidbody _rigidbody;
+    private bool vivo = true;
 
     void Awake()
     {
         _animator = GetComponent<Animator>();
         _rigidbody = GetComponent<Rigidbody>();
+    }
+
+    void Start()
+    {
+        Time.timeScale = 1;
     }
 
     void Update()
@@ -31,6 +41,11 @@ public class ControlaJogador : MonoBehaviour
 
         bool movendo = direcao != Vector3.zero;
         _animator.SetBool("Movendo", movendo);
+
+        if (!vivo && Input.GetButtonDown("Fire1"))
+        {
+            SceneManager.LoadScene("Game");
+        }
     }
 
     void FixedUpdate()
@@ -50,6 +65,12 @@ public class ControlaJogador : MonoBehaviour
             Quaternion rotacao = Quaternion.LookRotation(posicaoMiraJogador);
             _rigidbody.MoveRotation(rotacao);
         }
+    }
+
+    public void GameOver()
+    {
+        textoGameOver.SetActive(true);
+        vivo = false;
     }
 
 }

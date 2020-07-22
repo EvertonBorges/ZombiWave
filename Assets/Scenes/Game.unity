@@ -862,6 +862,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44a5911d83abcb6429594ccaf6847458, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mascaraChao:
+    serializedVersion: 2
+    m_Bits: 256
   velocidade: 10
 --- !u!95 &1882782871
 Animator:
@@ -1067,6 +1070,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Hotel_Estacionamento_Destruido
+      objectReference: {fileID: 0}
+    - target: {fileID: 1526670754281102002, guid: 3530e256c6665374cacf282029b7e420,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3530e256c6665374cacf282029b7e420, type: 3}

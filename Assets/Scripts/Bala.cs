@@ -20,4 +20,14 @@ public class Bala : MonoBehaviour
     {
         _rigidbody.MovePosition(_rigidbody.position + transform.forward * velocidade * Time.deltaTime);
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Inimigo"))
+        {
+            Destroy(other.gameObject);
+        }
+        Destroy(gameObject);
+    }
+
 }

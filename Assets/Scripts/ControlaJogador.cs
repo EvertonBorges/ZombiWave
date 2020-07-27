@@ -15,6 +15,9 @@ public class ControlaJogador : MonoBehaviour
     [SerializeField]
     private GameObject textoGameOver;
 
+    [SerializeField]
+    private int vida = 100;
+
     private Vector3 direcao;
 
     private Animator _animator;
@@ -67,10 +70,9 @@ public class ControlaJogador : MonoBehaviour
         }
     }
 
-    public void GameOver()
+    public void TomarDano()
     {
-        textoGameOver.SetActive(true);
-        vivo = false;
+        vida -= 30;
     }
 
 }

@@ -50,8 +50,8 @@ public class ControlaInimigo : MonoBehaviour
 
     void AtacaJogador ()
     {
-        Time.timeScale = 0;
-        _jogador.GetComponent<ControlaJogador>().GameOver();
+        //Time.timeScale = 0;
+        _jogador.GetComponent<ControlaJogador>().TomarDano();
     }
 
 }

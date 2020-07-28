@@ -18,10 +18,14 @@ public class ControlaJogador : MonoBehaviour
     [SerializeField]
     private int vida = 100;
 
+    [SerializeField]
+    private ControlaInterface scriptControlaInterface;
+
     private Vector3 direcao;
 
     private Animator _animator;
     private Rigidbody _rigidbody;
+
 
     void Awake()
     {
@@ -77,6 +81,13 @@ public class ControlaJogador : MonoBehaviour
             Time.timeScale = 0;
             textoGameOver.SetActive(true);
         }
+
+        scriptControlaInterface.AtualizarSliderVidaJogador();
+    }
+
+    public int GetVida()
+    {
+        return vida;
     }
 
 }

@@ -224,6 +224,10 @@ PrefabInstance:
       propertyPath: textoGameOver
       value: 
       objectReference: {fileID: 1908337578}
+    - target: {fileID: 1882782870, guid: 4b3bb44effa49480d8d18049684cc33a, type: 3}
+      propertyPath: scriptControlaInterface
+      value: 
+      objectReference: {fileID: 1945402224}
     - target: {fileID: 1884102019447498, guid: 4b3bb44effa49480d8d18049684cc33a, type: 3}
       propertyPath: m_Name
       value: Jogador
@@ -5394,6 +5398,7 @@ GameObject:
   - component: {fileID: 1945402222}
   - component: {fileID: 1945402221}
   - component: {fileID: 1945402220}
+  - component: {fileID: 1945402224}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -5482,6 +5487,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1945402224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1945402219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1edd796bb705b4f4b9d3415b5eb9040b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sliderVidaJogador: {fileID: 60033507}
 --- !u!1001 &1953913829
 PrefabInstance:
   m_ObjectHideFlags: 0

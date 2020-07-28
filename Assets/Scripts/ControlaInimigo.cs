@@ -50,8 +50,8 @@ public class ControlaInimigo : MonoBehaviour
 
     void AtacaJogador ()
     {
-        //Time.timeScale = 0;
-        _jogador.GetComponent<ControlaJogador>().TomarDano();
+        int dano = Random.Range(20, 30);
+        _jogador.GetComponent<ControlaJogador>().TomarDano(dano);
     }
 
 }

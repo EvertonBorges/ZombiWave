@@ -22,7 +22,6 @@ public class ControlaJogador : MonoBehaviour
 
     private Animator _animator;
     private Rigidbody _rigidbody;
-    private bool vivo = true;
 
     void Awake()
     {
@@ -45,7 +44,7 @@ public class ControlaJogador : MonoBehaviour
         bool movendo = direcao != Vector3.zero;
         _animator.SetBool("Movendo", movendo);
 
-        if (!vivo && Input.GetButtonDown("Fire1"))
+        if (vida <= 0 && Input.GetButtonDown("Fire1"))
         {
             SceneManager.LoadScene("Game");
         }
@@ -70,9 +69,14 @@ public class ControlaJogador : MonoBehaviour
         }
     }
 
-    public void TomarDano()
+    public void TomarDano(int dano)
     {
-        vida -= 30;
+        vida -= dano;
+        if (vida <= 0)
+        {
+            Time.timeScale = 0;
+            textoGameOver.SetActive(true);
+        }
     }
 
 }

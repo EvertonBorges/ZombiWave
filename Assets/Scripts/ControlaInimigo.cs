@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class ControlaInimigo : MonoBehaviour
 {
-    [SerializeField]
-    private float velocidade = 5;
 
     private GameObject _jogador;
     private MovimentoPersonagem _movimentoPersonagem;
     private AnimacaoPersonagem _animacaoPersonagem;
+    private Status _status;
 
     void Start()
     {
@@ -17,6 +16,7 @@ public class ControlaInimigo : MonoBehaviour
 
         _movimentoPersonagem = GetComponent<MovimentoPersonagem>();
         _animacaoPersonagem = GetComponent<AnimacaoPersonagem>();
+        _status = GetComponent<Status>();
 
         AleatorizarZumbis();
     }
@@ -30,7 +30,7 @@ public class ControlaInimigo : MonoBehaviour
 
 		if (distancia > 2.5)
 		{
-            _movimentoPersonagem.Movimentar(direcao, velocidade);
+            _movimentoPersonagem.Movimentar(direcao, _status.velocidade);
             _animacaoPersonagem.Atacar(false);
 		} 
         else

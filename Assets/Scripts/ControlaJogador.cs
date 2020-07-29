@@ -10,13 +10,7 @@ public class ControlaJogador : MonoBehaviour
     private LayerMask mascaraChao;
 
     [SerializeField]
-    private float velocidade = 10;
-
-    [SerializeField]
     private GameObject textoGameOver;
-
-    [SerializeField]
-    private int vida = 100;
 
     [SerializeField]
     private ControlaInterface scriptControlaInterface;
@@ -28,11 +22,13 @@ public class ControlaJogador : MonoBehaviour
 
     private MovimentoJogador _movimentoJogador;
     private AnimacaoPersonagem _animacaoPersonagem;
+    private Status _status;
 
     void Awake()
     {
         _movimentoJogador = GetComponent<MovimentoJogador>();
         _animacaoPersonagem = GetComponent<AnimacaoPersonagem>();
+        _status = GetComponent<Status>();
     }
 
     void Start()
@@ -49,7 +45,7 @@ public class ControlaJogador : MonoBehaviour
 
         _animacaoPersonagem.Movimentar(direcao.magnitude);
 
-        if (vida <= 0 && Input.GetButtonDown("Fire1"))
+        if (_status.GetVida() <= 0 && Input.GetButtonDown("Fire1"))
         {
             SceneManager.LoadScene("Game");
         }
@@ -57,15 +53,15 @@ public class ControlaJogador : MonoBehaviour
 
     void FixedUpdate()
     {
-        _movimentoJogador.Movimentar(direcao, velocidade);
+        _movimentoJogador.Movimentar(direcao, _status.velocidade);
         _movimentoJogador.RotacaoJogador(mascaraChao);
     }
 
     public void TomarDano(int dano)
     {
-        vida -= dano;
+        _status.SetVida(dano);
         ControlaAudio.Instancia().PlayOneShot(somDeDano);
-        if (vida <= 0)
+        if (_status.GetVida() <= 0)
         {
             Time.timeScale = 0;
             textoGameOver.SetActive(true);
@@ -76,7 +72,7 @@ public class ControlaJogador : MonoBehaviour
 
     public int GetVida()
     {
-        return vida;
+        return _status.GetVida();
     }
 
 }

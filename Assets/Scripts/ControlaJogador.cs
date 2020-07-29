@@ -27,13 +27,12 @@ public class ControlaJogador : MonoBehaviour
     private Vector3 direcao;
 
     private Animator _animator;
-    private Rigidbody _rigidbody;
-
+    private MovimentoPersonagem _movimentoPersonagem;
 
     void Awake()
     {
         _animator = GetComponent<Animator>();
-        _rigidbody = GetComponent<Rigidbody>();
+        _movimentoPersonagem = GetComponent<MovimentoPersonagem>();
     }
 
     void Start()
@@ -59,10 +58,10 @@ public class ControlaJogador : MonoBehaviour
 
     void FixedUpdate()
     {
-        _rigidbody.MovePosition(_rigidbody.position + direcao * velocidade * Time.deltaTime);
+        _movimentoPersonagem.Movimentar(direcao, velocidade);
 
         Ray raio = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Debug.DrawRay(raio.origin, raio.direction * 100, Color.red);
+        // Debug.DrawRay(raio.origin, raio.direction * 100, Color.red);
 
         RaycastHit impacto;
 
@@ -71,8 +70,7 @@ public class ControlaJogador : MonoBehaviour
             Vector3 posicaoMiraJogador = impacto.point - transform.position;
             posicaoMiraJogador.y = transform.position.y;
 
-            Quaternion rotacao = Quaternion.LookRotation(posicaoMiraJogador);
-            _rigidbody.MoveRotation(rotacao);
+            _movimentoPersonagem.Rotacionar(posicaoMiraJogador);
         }
     }
 

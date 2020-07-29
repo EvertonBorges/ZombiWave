@@ -10,6 +10,9 @@ public class ControlaArma : MonoBehaviour
 	
 	[SerializeField]
 	private GameObject canoDaArma;
+
+    [SerializeField]
+    private AudioClip somDeTiro;
 	
     // Start is called before the first frame update
     void Start()
@@ -23,6 +26,7 @@ public class ControlaArma : MonoBehaviour
         if (Input.GetButtonDown("Fire1")) 
 		{
 			Instantiate(bala, canoDaArma.transform.position, canoDaArma.transform.rotation);
+            ControlaAudio.Instancia().PlayOneShot(somDeTiro);
 		}
     }
 }

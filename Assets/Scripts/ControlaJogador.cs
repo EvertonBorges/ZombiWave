@@ -21,6 +21,9 @@ public class ControlaJogador : MonoBehaviour
     [SerializeField]
     private ControlaInterface scriptControlaInterface;
 
+    [SerializeField]
+    private AudioClip somDeDano;
+
     private Vector3 direcao;
 
     private Animator _animator;
@@ -76,6 +79,7 @@ public class ControlaJogador : MonoBehaviour
     public void TomarDano(int dano)
     {
         vida -= dano;
+        ControlaAudio.Instancia().PlayOneShot(somDeDano);
         if (vida <= 0)
         {
             Time.timeScale = 0;

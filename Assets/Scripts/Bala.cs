@@ -7,6 +7,9 @@ public class Bala : MonoBehaviour
 	
 	[SerializeField]
 	private float velocidade = 20;
+
+    [SerializeField]
+    private AudioClip somDeMorte;
 	
 	private Rigidbody _rigidbody;
 	
@@ -26,6 +29,7 @@ public class Bala : MonoBehaviour
         if (other.CompareTag("Inimigo"))
         {
             Destroy(other.gameObject);
+            ControlaAudio.Instancia().PlayOneShot(somDeMorte);
         }
         Destroy(gameObject);
     }

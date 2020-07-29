@@ -2621,6 +2621,9 @@ MonoBehaviour:
     m_Bits: 256
   velocidade: 10
   textoGameOver: {fileID: 0}
+  vida: 100
+  scriptControlaInterface: {fileID: 0}
+  somDeDano: {fileID: 8300000, guid: 44e5672f59299fd49ae01023e4ad7a9d, type: 3}
 --- !u!114 &1882782874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2635,6 +2638,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bala: {fileID: 2170939375069143296, guid: 5e28d3dd48e24ed40a3542d0f8e43a6f, type: 3}
   canoDaArma: {fileID: 571635837}
+  somDeTiro: {fileID: 8300000, guid: fb39069fa82d8ed41997c7ffccc055f6, type: 3}
 --- !u!1 &1938851689004064
 GameObject:
   m_ObjectHideFlags: 0

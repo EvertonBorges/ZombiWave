@@ -26,13 +26,13 @@ public class ControlaJogador : MonoBehaviour
 
     private Vector3 direcao;
 
-    private Animator _animator;
-    private MovimentoPersonagem _movimentoPersonagem;
+    private MovimentoJogador _movimentoJogador;
+    private AnimacaoPersonagem _animacaoPersonagem;
 
     void Awake()
     {
-        _animator = GetComponent<Animator>();
-        _movimentoPersonagem = GetComponent<MovimentoPersonagem>();
+        _movimentoJogador = GetComponent<MovimentoJogador>();
+        _animacaoPersonagem = GetComponent<AnimacaoPersonagem>();
     }
 
     void Start()
@@ -47,8 +47,7 @@ public class ControlaJogador : MonoBehaviour
 
         direcao = new Vector3(eixoX, 0, eixoZ);
 
-        bool movendo = direcao != Vector3.zero;
-        _animator.SetBool("Movendo", movendo);
+        _animacaoPersonagem.Movimentar(direcao.magnitude);
 
         if (vida <= 0 && Input.GetButtonDown("Fire1"))
         {
@@ -58,20 +57,8 @@ public class ControlaJogador : MonoBehaviour
 
     void FixedUpdate()
     {
-        _movimentoPersonagem.Movimentar(direcao, velocidade);
-
-        Ray raio = Camera.main.ScreenPointToRay(Input.mousePosition);
-        // Debug.DrawRay(raio.origin, raio.direction * 100, Color.red);
-
-        RaycastHit impacto;
-
-        if (Physics.Raycast(raio, out impacto, 100, mascaraChao))
-        {
-            Vector3 posicaoMiraJogador = impacto.point - transform.position;
-            posicaoMiraJogador.y = transform.position.y;
-
-            _movimentoPersonagem.Rotacionar(posicaoMiraJogador);
-        }
+        _movimentoJogador.Movimentar(direcao, velocidade);
+        _movimentoJogador.RotacaoJogador(mascaraChao);
     }
 
     public void TomarDano(int dano)

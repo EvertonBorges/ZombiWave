@@ -229,14 +229,6 @@ PrefabInstance:
       propertyPath: scriptControlaInterface
       value: 
       objectReference: {fileID: 1945402224}
-    - target: {fileID: 1882782870, guid: 4b3bb44effa49480d8d18049684cc33a, type: 3}
-      propertyPath: somDeDano
-      value: 
-      objectReference: {fileID: 8300000, guid: 44e5672f59299fd49ae01023e4ad7a9d, type: 3}
-    - target: {fileID: 1882782874, guid: 4b3bb44effa49480d8d18049684cc33a, type: 3}
-      propertyPath: somDeTiro
-      value: 
-      objectReference: {fileID: 8300000, guid: fb39069fa82d8ed41997c7ffccc055f6, type: 3}
     - target: {fileID: 1884102019447498, guid: 4b3bb44effa49480d8d18049684cc33a, type: 3}
       propertyPath: m_Name
       value: Jogador
@@ -8376,7 +8368,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1882782869}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83c45597522de4e4099afac95a555b18, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ab253b6a7a465f4480f5cb7325ab5c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1882782871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1882782869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1412cbcdfc8b6974a8b999a866853110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1883303734

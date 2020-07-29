@@ -5,6 +5,7 @@ using UnityEngine;
 public class AnimacaoPersonagem : MonoBehaviour
 {
     private const string ANIMATOR_ATACANDO = "Atacando";
+    private const string ANIMATOR_MOVENDO = "Movendo";
 
     private Animator _animator;
 
@@ -16,5 +17,10 @@ public class AnimacaoPersonagem : MonoBehaviour
     public void Atacar(bool estado)
     {
         _animator.SetBool(ANIMATOR_ATACANDO, estado);
+    }
+
+    public void Movimentar(float movimento)
+    {
+        _animator.SetFloat(ANIMATOR_MOVENDO, movimento);
     }
 }

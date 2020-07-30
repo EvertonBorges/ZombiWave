@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class GeradorZumbis : MonoBehaviour
@@ -11,22 +12,61 @@ public class GeradorZumbis : MonoBehaviour
     [SerializeField]
     private float tempoGerarZumbi = 1;
 
-    private float contadorTempo = 0;
+    [SerializeField]
+    public LayerMask layerZumbi;
 
-    // Start is called before the first frame update
-    void Start()
+    private float _contadorTempo = 0;
+    private float _distanciaDeGeracao = 3f;
+    private float _distanciaDoJogadorParaGeracao = 20f;
+
+    private GameObject _jogador;
+    
+    void Awake()
     {
-        
+        _jogador = GameObject.FindWithTag(Tags.JOGADOR);
     }
 
     // Update is called once per frame
     void Update()
     {
-        contadorTempo += Time.deltaTime;
-        if (contadorTempo >= tempoGerarZumbi)
+        if (Vector3.Distance(transform.position, _jogador.transform.position) > _distanciaDoJogadorParaGeracao)
         {
-            Instantiate(zumbi, transform.position, transform.rotation);
-            contadorTempo = 0;
+            _contadorTempo += Time.deltaTime;
+            if (_contadorTempo >= tempoGerarZumbi)
+            {
+                StartCoroutine(GerarNovoZumbi());
+                _contadorTempo = 0;
+            }
         }
     }
+
+    IEnumerator GerarNovoZumbi()
+    {
+        Vector3 posicaoDeCriacao = AleatorizarPosicao();
+        Collider[] colisores = Physics.OverlapSphere(posicaoDeCriacao, 1, layerZumbi);
+        while (colisores.Length > 0)
+        {
+            posicaoDeCriacao = AleatorizarPosicao();
+            colisores = Physics.OverlapSphere(posicaoDeCriacao, 1, layerZumbi);
+            yield return null;
+        }
+
+        Instantiate(zumbi, posicaoDeCriacao, transform.rotation);
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, _distanciaDeGeracao);
+    }
+
+    Vector3 AleatorizarPosicao()
+    {
+        Vector3 posicao = Random.insideUnitSphere * _distanciaDeGeracao;
+        posicao += transform.position;
+        posicao.y = 0;
+
+        return posicao;
+    }
+
 }

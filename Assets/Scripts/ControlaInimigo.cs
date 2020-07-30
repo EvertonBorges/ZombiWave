@@ -71,6 +71,7 @@ public class ControlaInimigo : MonoBehaviour, IMatavel
         Vector3 posicao = Random.insideUnitSphere * 10;
         posicao += transform.position;
         posicao.y = transform.position.y;
+
         return posicao;
     }
 

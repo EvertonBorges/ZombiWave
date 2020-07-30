@@ -12,6 +12,10 @@ public class ControlaInimigo : MonoBehaviour, IMatavel
     private MovimentoPersonagem _movimentoPersonagem;
     private AnimacaoPersonagem _animacaoPersonagem;
     private Status _status;
+    private Vector3 _posicaoAleatoria;
+    private Vector3 _direcao;
+    private float _contadorVagar;
+    private float _tempoEntrePosicoesAleatorias = 4f;
 
     void Start()
     {
@@ -27,19 +31,54 @@ public class ControlaInimigo : MonoBehaviour, IMatavel
     void FixedUpdate()
     {
 		float distancia = Vector3.Distance(transform.position, _jogador.transform.position);
-		Vector3 direcao = _jogador.transform.position - transform.position;
 
-        _movimentoPersonagem.Rotacionar(direcao);
+        _movimentoPersonagem.Rotacionar(_direcao);
+        _animacaoPersonagem.Movimentar(_direcao.magnitude);
 
-		if (distancia > 2.5)
+        if (distancia > 15)
+        {
+            Vagar();
+        }
+		else if (distancia > 2.5)
 		{
-            _movimentoPersonagem.Movimentar(direcao, _status.GetVelocidade());
-            _animacaoPersonagem.Atacar(false);
+            MovimentarEmDirecaoAoJogador();
 		} 
         else
         {
             _animacaoPersonagem.Atacar(true);
         }
+    }
+
+    void Vagar()
+    {
+        _contadorVagar -= Time.deltaTime;
+        if (_contadorVagar <= 0)
+        {
+            _posicaoAleatoria = AleatorizarPosicao();
+            _contadorVagar = _tempoEntrePosicoesAleatorias;
+        }
+
+        bool ficouPertoOSuficiente = Vector3.Distance(transform.position, _posicaoAleatoria) <= 0.05f;
+        if (!ficouPertoOSuficiente)
+        {
+            _direcao = _posicaoAleatoria - transform.position;
+            _movimentoPersonagem.Movimentar(_direcao, _status.GetVelocidade());
+        }
+    }
+
+    Vector3 AleatorizarPosicao()
+    {
+        Vector3 posicao = Random.insideUnitSphere * 10;
+        posicao += transform.position;
+        posicao.y = transform.position.y;
+        return posicao;
+    }
+
+    void MovimentarEmDirecaoAoJogador()
+    {
+        _direcao = _jogador.transform.position - transform.position;
+        _movimentoPersonagem.Movimentar(_direcao, _status.GetVelocidade());
+        _animacaoPersonagem.Atacar(false);
     }
 
     void AtacaJogador ()

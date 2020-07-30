@@ -11,7 +11,7 @@ public class Status : MonoBehaviour
 
     private int _vida;
 
-    void Start()
+    void Awake()
     {
         _vida = vidaInicial;
     }

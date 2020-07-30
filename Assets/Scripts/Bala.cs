@@ -9,7 +9,7 @@ public class Bala : MonoBehaviour
 	private float velocidade = 20;
 
     [SerializeField]
-    private AudioClip somDeMorte;
+    private int dano = 1;
 	
 	private Rigidbody _rigidbody;
 	
@@ -26,9 +26,9 @@ public class Bala : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Inimigo"))
+        if (other.CompareTag(Tags.INIMIGO))
         {
-            other.GetComponent<ControlaInimigo>().TomarDano(1);
+            other.GetComponent<ControlaInimigo>().TomarDano(dano);
         }
         Destroy(gameObject);
     }

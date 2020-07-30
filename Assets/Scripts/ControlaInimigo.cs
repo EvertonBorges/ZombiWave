@@ -15,7 +15,7 @@ public class ControlaInimigo : MonoBehaviour, IMatavel
 
     void Start()
     {
-        _jogador = GameObject.FindGameObjectWithTag("Jogador");
+        _jogador = GameObject.FindGameObjectWithTag(Tags.JOGADOR);
 
         _movimentoPersonagem = GetComponent<MovimentoPersonagem>();
         _animacaoPersonagem = GetComponent<AnimacaoPersonagem>();

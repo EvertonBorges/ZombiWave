@@ -13,6 +13,9 @@ public class ControlaInterface : MonoBehaviour
     [SerializeField]
     private GameObject painelGameOver;
 
+    [SerializeField]
+    private Text textoTempoSobrevivencia;
+
     private ControlaJogador scriptControlaJogador;
 
     // Start is called before the first frame update
@@ -36,6 +39,12 @@ public class ControlaInterface : MonoBehaviour
     {
         Time.timeScale = 0;
         painelGameOver.SetActive(true);
+
+        float time = Time.timeSinceLevelLoad;
+
+        int minutos = Mathf.FloorToInt(time / 60);
+        int segundos = Mathf.FloorToInt(time % 60);
+        textoTempoSobrevivencia.text = "Você sobreviveu por " + minutos + "min e " + segundos + "s";
     }
 
     public void Reiniciar()

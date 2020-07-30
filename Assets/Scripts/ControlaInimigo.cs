@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ControlaInimigo : MonoBehaviour
+public class ControlaInimigo : MonoBehaviour, IMatavel
 {
+
+    [SerializeField]
+    private AudioClip somDeMorte;
 
     private GameObject _jogador;
     private MovimentoPersonagem _movimentoPersonagem;
@@ -30,7 +33,7 @@ public class ControlaInimigo : MonoBehaviour
 
 		if (distancia > 2.5)
 		{
-            _movimentoPersonagem.Movimentar(direcao, _status.velocidade);
+            _movimentoPersonagem.Movimentar(direcao, _status.GetVelocidade());
             _animacaoPersonagem.Atacar(false);
 		} 
         else
@@ -49,6 +52,21 @@ public class ControlaInimigo : MonoBehaviour
     {
         int geraTipoZumbi = Random.Range(1, 28);
         transform.GetChild(geraTipoZumbi).gameObject.SetActive(true);
+    }
+
+    public void TomarDano(int dano)
+    {
+        _status.SetVida(dano);
+        if (_status.GetVida() <= 0)
+        {
+            Morrer();
+        }
+    }
+
+    public void Morrer()
+    {
+        Destroy(gameObject);
+        ControlaAudio.Instancia().PlayOneShot(somDeMorte);
     }
 
 }

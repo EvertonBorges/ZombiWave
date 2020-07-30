@@ -28,8 +28,7 @@ public class Bala : MonoBehaviour
     {
         if (other.CompareTag("Inimigo"))
         {
-            Destroy(other.gameObject);
-            ControlaAudio.Instancia().PlayOneShot(somDeMorte);
+            other.GetComponent<ControlaInimigo>().TomarDano(1);
         }
         Destroy(gameObject);
     }

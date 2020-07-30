@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ControlaJogador : MonoBehaviour
+public class ControlaJogador : MonoBehaviour, IMatavel
 {
 
     [SerializeField]
@@ -53,7 +53,7 @@ public class ControlaJogador : MonoBehaviour
 
     void FixedUpdate()
     {
-        _movimentoJogador.Movimentar(direcao, _status.velocidade);
+        _movimentoJogador.Movimentar(direcao, _status.GetVelocidade());
         _movimentoJogador.RotacaoJogador(mascaraChao);
     }
 
@@ -63,8 +63,7 @@ public class ControlaJogador : MonoBehaviour
         ControlaAudio.Instancia().PlayOneShot(somDeDano);
         if (_status.GetVida() <= 0)
         {
-            Time.timeScale = 0;
-            textoGameOver.SetActive(true);
+            Morrer();
         }
 
         scriptControlaInterface.AtualizarSliderVidaJogador();
@@ -75,4 +74,9 @@ public class ControlaJogador : MonoBehaviour
         return _status.GetVida();
     }
 
+    public void Morrer()
+    {
+        Time.timeScale = 0;
+        textoGameOver.SetActive(true);
+    }
 }

@@ -641,7 +641,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94f2153d1de217f4a9df0f4909968f2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidade: 5
+  somDeMorte: {fileID: 8300000, guid: c577d5b72790d6e4ba5c989e8dc4f1ae, type: 3}
 --- !u!54 &547557260
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -694,7 +694,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4648cd63994f6a549b25626a13f62996, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vidaInicial: 100
+  vidaInicial: 3
   velocidade: 5
 --- !u!1 &1065480718027956
 GameObject:

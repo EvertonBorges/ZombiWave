@@ -1,16 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class ControlaJogador : MonoBehaviour, IMatavel
 {
 
     [SerializeField]
     private LayerMask mascaraChao;
-
-    [SerializeField]
-    private GameObject textoGameOver;
 
     [SerializeField]
     private ControlaInterface scriptControlaInterface;
@@ -31,11 +27,6 @@ public class ControlaJogador : MonoBehaviour, IMatavel
         _status = GetComponent<Status>();
     }
 
-    void Start()
-    {
-        Time.timeScale = 1;
-    }
-
     void Update()
     {
         float eixoX = Input.GetAxis("Horizontal");
@@ -44,11 +35,6 @@ public class ControlaJogador : MonoBehaviour, IMatavel
         direcao = new Vector3(eixoX, 0, eixoZ);
 
         _animacaoPersonagem.Movimentar(direcao.magnitude);
-
-        if (_status.GetVida() <= 0 && Input.GetButtonDown("Fire1"))
-        {
-            SceneManager.LoadScene("Game");
-        }
     }
 
     void FixedUpdate()
@@ -76,7 +62,6 @@ public class ControlaJogador : MonoBehaviour, IMatavel
 
     public void Morrer()
     {
-        Time.timeScale = 0;
-        textoGameOver.SetActive(true);
+        scriptControlaInterface.GameOver();
     }
 }

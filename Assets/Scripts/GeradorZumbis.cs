@@ -20,6 +20,8 @@ public class GeradorZumbis : MonoBehaviour
     private float _distanciaDoJogadorParaGeracao = 20f;
     private int _quantidadeMaximaDeZumbisVivos = 2;
     private int _quantidadeDeZumbisVivos;
+    private float _tempoProximoAumentoDeDificuldade = 30;
+    private float _contadorDeAumentarDificuldade;
 
     private GameObject _jogador;
     
@@ -47,6 +49,12 @@ public class GeradorZumbis : MonoBehaviour
                 _contadorTempo = 0;
             }
         }
+
+        if (Time.timeSinceLevelLoad > _contadorDeAumentarDificuldade)
+        {
+            _quantidadeMaximaDeZumbisVivos++;
+            _contadorDeAumentarDificuldade = Time.timeSinceLevelLoad + _tempoProximoAumentoDeDificuldade;
+        }
     }
 
     IEnumerator GerarNovoZumbi()
@@ -60,7 +68,8 @@ public class GeradorZumbis : MonoBehaviour
             yield return null;
         }
 
-        Instantiate(zumbi, posicaoDeCriacao, transform.rotation);
+        ControlaInimigo scriptZumbi = Instantiate(zumbi, posicaoDeCriacao, transform.rotation).GetComponent<ControlaInimigo>();
+        scriptZumbi.SetGeradorZumbis(this);
         _quantidadeDeZumbisVivos++;
     }
 
@@ -77,6 +86,11 @@ public class GeradorZumbis : MonoBehaviour
         posicao.y = 0;
 
         return posicao;
+    }
+
+    public void DiminuirQuantidadeDeZumbisVivos()
+    {
+        _quantidadeDeZumbisVivos--;
     }
 
 }

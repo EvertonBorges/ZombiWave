@@ -21,6 +21,7 @@ public class ControlaInimigo : MonoBehaviour, IMatavel
     private float _tempoEntrePosicoesAleatorias = 4f;
     private float _porcentagemGerarKitMedico = 0.1f;
     private ControlaInterface _scriptControlainterface;
+    private GeradorZumbis geradorZumbis;
 
     void Start()
     {
@@ -117,6 +118,7 @@ public class ControlaInimigo : MonoBehaviour, IMatavel
         ControlaAudio.Instancia().PlayOneShot(somDeMorte);
         VerificarGeracaoKitMedico(_porcentagemGerarKitMedico);
         _scriptControlainterface.AtualizarQuantidadeDeZumbisMortos();
+        geradorZumbis.DiminuirQuantidadeDeZumbisVivos();
     }
 
     void VerificarGeracaoKitMedico(float porcentagemGeracao)
@@ -125,6 +127,11 @@ public class ControlaInimigo : MonoBehaviour, IMatavel
         {
             Instantiate(kitMedicoPrefab, transform.position, Quaternion.identity);
         }
+    }
+
+    public void SetGeradorZumbis(GeradorZumbis geradorZumbis)
+    {
+        this.geradorZumbis = geradorZumbis;
     }
 
 }

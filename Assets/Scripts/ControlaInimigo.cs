@@ -8,6 +8,9 @@ public class ControlaInimigo : MonoBehaviour, IMatavel
     [SerializeField]
     private AudioClip somDeMorte;
 
+    [SerializeField]
+    private GameObject kitMedicoPrefab;
+
     private GameObject _jogador;
     private MovimentoPersonagem _movimentoPersonagem;
     private AnimacaoPersonagem _animacaoPersonagem;
@@ -16,6 +19,7 @@ public class ControlaInimigo : MonoBehaviour, IMatavel
     private Vector3 _direcao;
     private float _contadorVagar;
     private float _tempoEntrePosicoesAleatorias = 4f;
+    private float _porcentagemGerarKitMedico = 0.1f;
 
     void Start()
     {
@@ -108,6 +112,15 @@ public class ControlaInimigo : MonoBehaviour, IMatavel
     {
         Destroy(gameObject);
         ControlaAudio.Instancia().PlayOneShot(somDeMorte);
+        VerificarGeracaoKitMedico(_porcentagemGerarKitMedico);
+    }
+
+    void VerificarGeracaoKitMedico(float porcentagemGeracao)
+    {
+        if (Random.value <= porcentagemGeracao)
+        {
+            Instantiate(kitMedicoPrefab, transform.position, Quaternion.identity);
+        }
     }
 
 }

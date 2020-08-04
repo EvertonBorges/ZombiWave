@@ -29,6 +29,10 @@ public class Status : MonoBehaviour
     public void CurarVida(int vida)
     {
         _vida += vida;
+        if (_vida >= vidaInicial)
+        {
+            _vida = vidaInicial;
+        }
     }
 
     public float GetVelocidade()

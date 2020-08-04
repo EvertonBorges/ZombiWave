@@ -18,18 +18,27 @@ public class GeradorZumbis : MonoBehaviour
     private float _contadorTempo = 0;
     private float _distanciaDeGeracao = 3f;
     private float _distanciaDoJogadorParaGeracao = 20f;
+    private int _quantidadeMaximaDeZumbisVivos = 2;
+    private int _quantidadeDeZumbisVivos;
 
     private GameObject _jogador;
     
     void Awake()
     {
         _jogador = GameObject.FindWithTag(Tags.JOGADOR);
+        for(int i = 0; i < _quantidadeMaximaDeZumbisVivos; i++)
+        {
+            StartCoroutine(GerarNovoZumbi());
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(transform.position, _jogador.transform.position) > _distanciaDoJogadorParaGeracao)
+        bool possoGerarZumbisPelaDistancia = Vector3.Distance(transform.position, _jogador.transform.position) > _distanciaDoJogadorParaGeracao;
+        bool possoGerarZumbisPelaQuantidade = _quantidadeDeZumbisVivos < _quantidadeMaximaDeZumbisVivos;
+
+        if (possoGerarZumbisPelaDistancia && possoGerarZumbisPelaQuantidade)
         {
             _contadorTempo += Time.deltaTime;
             if (_contadorTempo >= tempoGerarZumbi)
@@ -52,6 +61,7 @@ public class GeradorZumbis : MonoBehaviour
         }
 
         Instantiate(zumbi, posicaoDeCriacao, transform.rotation);
+        _quantidadeDeZumbisVivos++;
     }
 
     void OnDrawGizmos()

@@ -8730,7 +8730,7 @@ GameObject:
   - component: {fileID: 1846696158}
   - component: {fileID: 1846696157}
   m_Layer: 5
-  m_Name: Text
+  m_Name: TextoZumbisMortos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10018,6 +10018,7 @@ MonoBehaviour:
   painelGameOver: {fileID: 887393701}
   textoTempoSobrevivencia: {fileID: 782183980}
   textoPontuacaoMaxima: {fileID: 1914470595}
+  textoQuantidadeDeZumbisMortos: {fileID: 1846696157}
 --- !u!1001 &1953913829
 PrefabInstance:
   m_ObjectHideFlags: 0

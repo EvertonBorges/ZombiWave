@@ -21,6 +21,9 @@ public class ControlaInterface : MonoBehaviour
     [SerializeField]
     private Text textoPontuacaoMaxima;
 
+    [SerializeField]
+    private Text textoQuantidadeDeZumbisMortos;
+
     private ControlaJogador _scriptControlaJogador;
     private float _tempoPontuacaoSalvo;
     private int _quantidadeDeZumbisMortos;
@@ -49,6 +52,7 @@ public class ControlaInterface : MonoBehaviour
     public void AtualizarQuantidadeDeZumbisMortos()
     {
         _quantidadeDeZumbisMortos++;
+        textoQuantidadeDeZumbisMortos.text = string.Format("x {0}", _quantidadeDeZumbisMortos);
     }
 
     public void GameOver()

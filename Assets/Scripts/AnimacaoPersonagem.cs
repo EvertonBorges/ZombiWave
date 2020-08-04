@@ -6,6 +6,7 @@ public class AnimacaoPersonagem : MonoBehaviour
 {
     private const string ANIMATOR_ATACANDO = "Atacando";
     private const string ANIMATOR_MOVENDO = "Movendo";
+    private const string ANIMATOR_MORRER = "Morrer";
 
     private Animator _animator;
 
@@ -23,4 +24,10 @@ public class AnimacaoPersonagem : MonoBehaviour
     {
         _animator.SetFloat(ANIMATOR_MOVENDO, movimento);
     }
+
+    public void Morrer()
+    {
+        _animator.SetTrigger(ANIMATOR_MORRER);
+    }
+
 }

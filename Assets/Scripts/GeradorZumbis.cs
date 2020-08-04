@@ -34,7 +34,6 @@ public class GeradorZumbis : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         bool possoGerarZumbisPelaDistancia = Vector3.Distance(transform.position, _jogador.transform.position) > _distanciaDoJogadorParaGeracao;

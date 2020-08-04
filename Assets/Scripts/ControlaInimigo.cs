@@ -64,7 +64,7 @@ public class ControlaInimigo : MonoBehaviour, IMatavel
         if (_contadorVagar <= 0)
         {
             _posicaoAleatoria = AleatorizarPosicao();
-            _contadorVagar = _tempoEntrePosicoesAleatorias;
+            _contadorVagar = _tempoEntrePosicoesAleatorias + Random.Range(-1f, 1f);
         }
 
         bool ficouPertoOSuficiente = Vector3.Distance(transform.position, _posicaoAleatoria) <= 0.05f;

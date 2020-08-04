@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ControlaJogador : MonoBehaviour, IMatavel
+public class ControlaJogador : MonoBehaviour, IMatavel, ICuravel
 {
 
     [SerializeField]
@@ -45,7 +45,7 @@ public class ControlaJogador : MonoBehaviour, IMatavel
 
     public void TomarDano(int dano)
     {
-        _status.SetVida(dano);
+        _status.TirarVida(dano);
         ControlaAudio.Instancia().PlayOneShot(somDeDano);
         if (_status.GetVida() <= 0)
         {
@@ -64,4 +64,10 @@ public class ControlaJogador : MonoBehaviour, IMatavel
     {
         scriptControlaInterface.GameOver();
     }
+
+    public void CurarVida(int quantidadeDeVida)
+    {
+        _status.CurarVida(quantidadeDeVida);
+    }
+
 }

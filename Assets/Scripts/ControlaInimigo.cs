@@ -97,7 +97,7 @@ public class ControlaInimigo : MonoBehaviour, IMatavel
 
     public void TomarDano(int dano)
     {
-        _status.SetVida(dano);
+        _status.TirarVida(dano);
         if (_status.GetVida() <= 0)
         {
             Morrer();

@@ -21,9 +21,14 @@ public class Status : MonoBehaviour
         return _vida;
     }
 
-    public void SetVida(int dano)
+    public void TirarVida(int dano)
     {
         _vida -= dano;
+    }
+
+    public void CurarVida(int vida)
+    {
+        _vida += vida;
     }
 
     public float GetVelocidade()

@@ -23,6 +23,7 @@ public class ControlaInterface : MonoBehaviour
 
     private ControlaJogador _scriptControlaJogador;
     private float _tempoPontuacaoSalvo;
+    private int _quantidadeDeZumbisMortos;
 
     void Awake()
     {
@@ -43,6 +44,11 @@ public class ControlaInterface : MonoBehaviour
     public void AtualizarSliderVidaJogador()
     {
         sliderVidaJogador.value = _scriptControlaJogador.GetVida();
+    }
+
+    public void AtualizarQuantidadeDeZumbisMortos()
+    {
+        _quantidadeDeZumbisMortos++;
     }
 
     public void GameOver()

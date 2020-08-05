@@ -11355,6 +11355,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4487275496256792361, guid: 8b1a98f0037e9374ebb146972df8e80f,
+        type: 3}
+      propertyPath: kitMedico
+      value: 
+      objectReference: {fileID: 1060151288946202, guid: 6150c6f66b7034ec5b3672478195682a,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b1a98f0037e9374ebb146972df8e80f, type: 3}
 --- !u!1001 &2119068467

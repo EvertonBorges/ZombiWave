@@ -6,6 +6,9 @@ using UnityEngine.AI;
 public class ControlaChefe : MonoBehaviour, IMatavel
 {
 
+    [SerializeField]
+    private GameObject kitMedico;
+
     private Transform _jogador;
     private NavMeshAgent _navMeshAgent;
 
@@ -63,6 +66,8 @@ public class ControlaChefe : MonoBehaviour, IMatavel
         _movimentoPersonagem.Morrer();
         this.enabled = false;
         _navMeshAgent.enabled = false;
+
+        Instantiate(kitMedico, transform.position, Quaternion.identity);
         Destroy(gameObject, 2f);
     }
 

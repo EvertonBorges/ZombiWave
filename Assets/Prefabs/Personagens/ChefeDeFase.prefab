@@ -132,6 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8550b487e434d045bffce813562c769, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  kitMedico: {fileID: 1060151288946202, guid: 6150c6f66b7034ec5b3672478195682a, type: 3}
 --- !u!114 &-866500968290914752
 MonoBehaviour:
   m_ObjectHideFlags: 0

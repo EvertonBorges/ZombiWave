@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: -866500968290914752}
   - component: {fileID: 1529477797466309745}
   - component: {fileID: 2142228140353634650}
+  - component: {fileID: 1091695640}
   m_Layer: 9
   m_Name: ChefeDeFase
   m_TagString: Inimigo
@@ -115,7 +116,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
@@ -167,8 +168,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4648cd63994f6a549b25626a13f62996, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vidaInicial: 1
-  velocidade: 5
+  vidaInicial: 10
+  velocidade: 4
+--- !u!195 &1091695640
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063500868937916}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 1.2
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 5
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 5
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &1065480718027956
 GameObject:
   m_ObjectHideFlags: 0

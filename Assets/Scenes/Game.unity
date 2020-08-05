@@ -3134,7 +3134,7 @@ PrefabInstance:
     - target: {fileID: 6752239840526436609, guid: d806cac8ad2c2b94b99cfecced32f2dc,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6752239840526436610, guid: d806cac8ad2c2b94b99cfecced32f2dc,
         type: 3}
@@ -5503,7 +5503,7 @@ PrefabInstance:
     - target: {fileID: 6752239840526436609, guid: d806cac8ad2c2b94b99cfecced32f2dc,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6752239840526436610, guid: d806cac8ad2c2b94b99cfecced32f2dc,
         type: 3}
@@ -5716,7 +5716,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -5751,7 +5751,7 @@ PrefabInstance:
     - target: {fileID: 6752239840526436609, guid: d806cac8ad2c2b94b99cfecced32f2dc,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6752239840526436610, guid: d806cac8ad2c2b94b99cfecced32f2dc,
         type: 3}
@@ -7572,7 +7572,7 @@ PrefabInstance:
     - target: {fileID: 6752239840526436609, guid: d806cac8ad2c2b94b99cfecced32f2dc,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6752239840526436610, guid: d806cac8ad2c2b94b99cfecced32f2dc,
         type: 3}
@@ -11335,6 +11335,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 547557260, guid: 8b1a98f0037e9374ebb146972df8e80f, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1063500868937916, guid: 8b1a98f0037e9374ebb146972df8e80f, type: 3}
       propertyPath: m_Name
       value: ChefeDeFase
@@ -11383,6 +11387,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2142228140353634650, guid: 8b1a98f0037e9374ebb146972df8e80f,
+        type: 3}
+      propertyPath: vidaInicial
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2142228140353634650, guid: 8b1a98f0037e9374ebb146972df8e80f,
+        type: 3}
+      propertyPath: velocidade
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b1a98f0037e9374ebb146972df8e80f, type: 3}
 --- !u!1001 &2119068467
@@ -11400,7 +11414,7 @@ PrefabInstance:
     - target: {fileID: 6752239840526436609, guid: d806cac8ad2c2b94b99cfecced32f2dc,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6752239840526436610, guid: d806cac8ad2c2b94b99cfecced32f2dc,
         type: 3}
@@ -12036,7 +12050,7 @@ PrefabInstance:
     - target: {fileID: 6752239840526436609, guid: d806cac8ad2c2b94b99cfecced32f2dc,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6752239840526436610, guid: d806cac8ad2c2b94b99cfecced32f2dc,
         type: 3}

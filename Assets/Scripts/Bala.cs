@@ -26,9 +26,14 @@ public class Bala : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(Tags.INIMIGO))
+        switch(other.tag)
         {
-            other.GetComponent<ControlaInimigo>().TomarDano(dano);
+            case Tags.INIMIGO:
+                other.GetComponent<ControlaInimigo>().TomarDano(dano);
+                break;
+            case Tags.CHEFE_DE_FASE:
+                other.GetComponent<ControlaChefe>().TomarDano(dano);
+                break;
         }
         Destroy(gameObject);
     }

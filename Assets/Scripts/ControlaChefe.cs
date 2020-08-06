@@ -13,12 +13,20 @@ public class ControlaChefe : MonoBehaviour, IMatavel
     [SerializeField]
     private Slider sliderVida;
 
+    [SerializeField]
+    private Image imagemSlider;
+
+    [SerializeField]
+    private Color CorDaVidaMaxima, CorDaVidaMinima;
+
     private Transform _jogador;
     private NavMeshAgent _navMeshAgent;
 
     private Status _status;
     private AnimacaoPersonagem _animacaoPersonagem;
     private MovimentoPersonagem _movimentoPersonagem;
+
+    private int _vidaInicial;
 
     private void Start()
     {
@@ -31,7 +39,8 @@ public class ControlaChefe : MonoBehaviour, IMatavel
 
         _navMeshAgent.speed = _status.GetVelocidade();
 
-        sliderVida.maxValue = _status.GetVida();
+        _vidaInicial = _status.GetVida();
+        sliderVida.maxValue = _vidaInicial;
         AtualizarInterface();
     }
 
@@ -82,6 +91,9 @@ public class ControlaChefe : MonoBehaviour, IMatavel
     void AtualizarInterface ()
     {
         sliderVida.value = _status.GetVida();
+        float porcentagemDaVida = (float) _status.GetVida() / _vidaInicial;
+        Color corDaVida = Color.Lerp(CorDaVidaMinima, CorDaVidaMaxima, porcentagemDaVida);
+        imagemSlider.color = corDaVida;
     }
 
 }

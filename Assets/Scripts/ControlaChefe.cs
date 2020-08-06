@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class ControlaChefe : MonoBehaviour, IMatavel
 {
 
     [SerializeField]
     private GameObject kitMedico;
+
+    [SerializeField]
+    private Slider sliderVida;
 
     private Transform _jogador;
     private NavMeshAgent _navMeshAgent;
@@ -26,6 +30,9 @@ public class ControlaChefe : MonoBehaviour, IMatavel
         _movimentoPersonagem = GetComponent<MovimentoPersonagem>();
 
         _navMeshAgent.speed = _status.GetVelocidade();
+
+        sliderVida.maxValue = _status.GetVida();
+        AtualizarInterface();
     }
 
     private void Update()
@@ -54,6 +61,7 @@ public class ControlaChefe : MonoBehaviour, IMatavel
     public void TomarDano(int dano)
     {
         _status.TirarVida(dano);
+        AtualizarInterface();
         if (_status.GetVida() <= 0)
         {
             Morrer();
@@ -69,6 +77,11 @@ public class ControlaChefe : MonoBehaviour, IMatavel
 
         Instantiate(kitMedico, transform.position, Quaternion.identity);
         Destroy(gameObject, 2f);
+    }
+
+    void AtualizarInterface ()
+    {
+        sliderVida.value = _status.GetVida();
     }
 
 }

@@ -18,11 +18,23 @@ public class ControlaMenu : MonoBehaviour
 
     public void JogarJogo()
     {
-        SceneManager.LoadScene(Scenes.SCENE_GAME);
+        StartCoroutine(MudarCena(Scenes.SCENE_GAME));
     }
 
-    public void SairDoJog()
+    IEnumerator MudarCena(string name)
     {
+        yield return new WaitForSecondsRealtime(0.3f);
+        SceneManager.LoadScene(name);
+    }
+
+    public void SairDoJogo()
+    {
+        StartCoroutine(Sair());
+    }
+
+    IEnumerator Sair()
+    {
+        yield return new WaitForSecondsRealtime(0.3f);
         Application.Quit();
         #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;

@@ -19,6 +19,9 @@ public class ControlaChefe : MonoBehaviour, IMatavel
     [SerializeField]
     private Color CorDaVidaMaxima, CorDaVidaMinima;
 
+    [SerializeField]
+    private GameObject particulaSangueZumbi;
+
     private Transform _jogador;
     private NavMeshAgent _navMeshAgent;
 
@@ -75,6 +78,11 @@ public class ControlaChefe : MonoBehaviour, IMatavel
         {
             Morrer();
         }
+    }
+
+    public void ParticulaSangue(Vector3 posicao, Quaternion rotacao)
+    {
+        Instantiate(particulaSangueZumbi, posicao, rotacao);
     }
 
     public void Morrer()

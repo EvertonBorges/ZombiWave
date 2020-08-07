@@ -11,6 +11,9 @@ public class ControlaInimigo : MonoBehaviour, IMatavel
     [SerializeField]
     private GameObject kitMedicoPrefab;
 
+    [SerializeField]
+    private GameObject particulaSangueZumbi;
+
     private GameObject _jogador;
     private MovimentoPersonagem _movimentoPersonagem;
     private AnimacaoPersonagem _animacaoPersonagem;
@@ -110,6 +113,11 @@ public class ControlaInimigo : MonoBehaviour, IMatavel
         {
             Morrer();
         }
+    }
+
+    public void ParticulaSangue(Vector3 posicao, Quaternion rotacao)
+    {
+        Instantiate(particulaSangueZumbi, posicao, rotacao);
     }
 
     public void Morrer()

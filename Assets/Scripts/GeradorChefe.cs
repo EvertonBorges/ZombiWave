@@ -12,10 +12,12 @@ public class GeradorChefe : MonoBehaviour
     private float tempoEntreGeracoes = 60;
 
     private float _tempoParaProximaGeracao = 0f;
+    private ControlaInterface _scriptControlaInterface;
 
     private void Start()
     {
         _tempoParaProximaGeracao = tempoEntreGeracoes;
+        _scriptControlaInterface = GameObject.FindObjectOfType(typeof(ControlaInterface)) as ControlaInterface;
     }
 
     private void Update()
@@ -23,6 +25,7 @@ public class GeradorChefe : MonoBehaviour
         if(Time.timeSinceLevelLoad > _tempoParaProximaGeracao)
         {
             Instantiate(chefePrefab, transform.position, Quaternion.identity);
+            _scriptControlaInterface.AparecerTextoChefeCriado();
             _tempoParaProximaGeracao = Time.timeSinceLevelLoad + tempoEntreGeracoes;
         }
     }

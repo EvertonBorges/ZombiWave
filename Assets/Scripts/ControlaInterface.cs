@@ -24,6 +24,9 @@ public class ControlaInterface : MonoBehaviour
     [SerializeField]
     private Text textoQuantidadeDeZumbisMortos;
 
+    [SerializeField]
+    private Text textoChefeAparece;
+
     private ControlaJogador _scriptControlaJogador;
     private float _tempoPontuacaoSalvo;
     private int _quantidadeDeZumbisMortos;
@@ -86,6 +89,32 @@ public class ControlaInterface : MonoBehaviour
     public void Reiniciar()
     {
         SceneManager.LoadScene("Game");
+    }
+
+    public void AparecerTextoChefeCriado()
+    {
+        StartCoroutine(DesaparecerTexto(2, textoChefeAparece));
+    }
+
+    IEnumerator DesaparecerTexto (float tempoDeSumico, Text textoParaSumir)
+    {
+        textoParaSumir.gameObject.SetActive(true);
+        Color corTexto = textoParaSumir.color;
+        corTexto.a = 1;
+        textoParaSumir.color = corTexto;
+        yield return new WaitForSeconds(1);
+        float contador = 0;
+        while (textoParaSumir.color.a > 0)
+        {
+            contador += Time.deltaTime / tempoDeSumico;
+            corTexto.a = Mathf.Lerp(1, 0, contador);
+            textoParaSumir.color = corTexto;
+            if (textoParaSumir.color.a <= 0)
+            {
+                textoParaSumir.gameObject.SetActive(false);
+            }
+            yield return null;
+        }
     }
 
 }
